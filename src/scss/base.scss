@@ -1,0 +1,98 @@
+@import 'vars';
+@import 'mixins';
+
+// CSS Variables
+
+:root {
+  --color-body-background: white;
+  --color-green: green;
+}
+
+// Font-face Declarations
+
+// @font-face {
+//   font-family: 'Degular';
+//   src: url('DegularRegular.static.woff2') format('woff2'),
+//       url('DegularRegular.static.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: swap;
+// }
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: var(--color-body-background);
+  margin: 0;
+  padding: 0;
+  
+  &.lock-scroll {
+    height: 100vw;
+    overflow: hidden;
+  }
+}
+
+main {
+  margin-top: 60px;
+}
+
+// Reference: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+// Alpine.js reveal-on-load attribute
+[x-cloak] {
+  display: none;
+}
+
+.shell {
+  margin: auto;
+  max-width: $shell-width;
+}
+
+// Accessibility
+  
+/* The default outline styling, for greatest accessibility. */
+/* You can skip this to just use the browser's defaults. */
+:focus {
+  outline: #08f auto 2px;
+}
+
+/* When mouse is detected, ALL focused elements have outline removed. */
+body.using-mouse :focus {
+  outline: none;
+}
+
+.visually-hidden, .skip-to-content-link {
+  position: absolute!important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+
+.skip-to-content-link:focus {
+  position: fixed !important;
+  top: 0;
+  width: auto;
+  height: auto;
+  left: 0;
+  clip: initial;
+  background: black;
+  color: white;
+  padding: 12px 19px;
+}

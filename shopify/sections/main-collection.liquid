@@ -1,0 +1,112 @@
+{% schema %}
+{
+  "name": "collection",
+  "class": "collection-template"
+}
+{% endschema %}
+
+{% unless collection %}
+  {% assign collection = collections.all %}
+{% endunless %}
+
+<section class="collection">
+  <div class="collection-inner shell">
+    <h1 class="h1 dark">{{ collection.title }}</h1>
+    <div class="grid-wrapper">
+      <div class="product-grid">
+        {%- paginate collection.products by 12 -%}
+          {% for prod in collection.products %}
+            {% render 'product-grid-item', product: prod %}
+          {% endfor %}
+        </div>
+      </div>
+  
+      {%- if paginate.pages > 1 -%}
+        <nav class="pagination-nav" role="navigation ">
+          <ol class="pagination">
+            {%- if paginate.previous-%}
+              <li>
+                <a href="{{ paginate.previous.url }}">
+                  <span aria-hidden="true">&laquo;</span>
+                  Previous
+                  <span class="visuallyhidden"></span>
+                </a>
+              </li>
+            {%- else -%}
+              <li class="disabled">
+                <span aria-hidden="true">&laquo;</span>
+                Previous
+                <span class="visuallyhidden"></span>
+              </li>
+            {%- endif -%}
+  
+            {%- for part in paginate.parts -%}
+              {%- if part.is_link -%}
+                <li>
+                  <a href="{{ part.url }}">
+                    <span class="visuallyhidden"></span>
+                    {{ part.title }}
+                  </a>
+                </li>
+              {%- else -%}
+                {%- if part.title == paginate.current_page -%}
+                  <li aria-current="page" class="active">
+                    <span class="visuallyhidden"></span>
+                    {{ part.title }}
+                  </li>
+                {%- else -%}
+                  <li>
+                    <span class="visuallyhidden"></span>
+                    {{ part.title }}
+                  </li>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+  
+            {%- if paginate.next -%}
+              <li>
+                <a href="{{ paginate.next.url }}">
+                  Next
+                  <span class="visuallyhidden"></span>
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {%- else -%}
+              <li class="disabled">
+                Next
+                <span class="visuallyhidden"></span>
+                <span aria-hidden="true">&raquo;</span>
+              </li>
+            {%- endif -%}
+          </ol>
+        </nav>
+      {%- endif -%}
+    {% endpaginate %}
+  </div>
+</section>
+
+<style>
+  .collection {
+    padding: 20px;
+  }
+  @media (min-width: 576px) {
+    .collection-inner {
+      padding: 40px 0px;
+    }
+  }
+  .collection-inner .product-grid {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .collection-inner .pagination-nav {
+    margin-top: 40px;
+  }
+  .collection-inner .pagination-nav .pagination {
+    display: flex;
+    gap: 10px;
+    margin: auto;
+    max-width: max-content;
+  }
+</style>

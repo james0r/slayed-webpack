@@ -2,9 +2,13 @@
   "sections": {
     "main": {
       "type": "main-index"
+    },
+    "main-collection": {
+      "type": "main-collection"
     }
   },
   "order": [
-    "main"
+    "main",
+    "main-collection"
   ]
 }

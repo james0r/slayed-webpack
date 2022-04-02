@@ -1,20 +1,8 @@
-<div class="container">
-  <div>
-    {% for link in linklists.footer.links %}
-      <a href="{{ link.url }}">
-        {{ link.title }}
-      </a>
-    {% endfor %}
-  </div>
-
-  <div>
-    &copy; Shopify Theme Lab
-  </div>
-</div>
-
 {% schema %}
 {
-  "name": "t:sections.footer.name",
+  "name": "footer",
+  "class": "footer",
+  "tag": "footer",
   "settings": [
     {
       "type": "paragraph",
@@ -23,3 +11,29 @@
   ]
 }
 {% endschema %}
+
+<div class="footer-inner shell">
+    <div>
+      {% for link in linklists.footer.links %}
+        <a href="{{ link.url }}">
+          {{ link.title }}
+        </a>
+      {% endfor %}
+    </div>
+  
+    <small>
+      &copy; {{ "now" | date: "%Y" }} Slayed Starter Theme
+    </small>
+    <div>
+      Alpine Demo Output (Should be removed in production)
+      <span x-test-directive="Hello World">Test Directive</span>
+      <span x-text="$moneyWithoutTrailingZeros(2000)"></span>
+    </div>
+</div>
+
+<style>
+  .footer-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+</style>

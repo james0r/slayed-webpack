@@ -1,0 +1,33 @@
+@import 'vars';
+
+.btn {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--color-green);
+  display: block;
+  width: 100%;
+  padding: 9px 30px 11px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: inherit;
+
+  &:disabled {
+    border: 1px solid gray;
+    pointer-events: none;
+  }
+
+  &:first-child {
+    margin-bottom: 10px;
+  }
+
+  &.inverted {
+    background-color: var(--color-green);
+    color: white; 
+  }
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 0 1px var(--color-green);
+  }
+}

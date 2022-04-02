@@ -1,11 +1,77 @@
-<div class="container">
-  <a href="{{ routes.root_url }}">
+{% schema %}
+{
+  "name": "header",
+  "class": "header",
+  "tag": "header",
+  "settings": [
+
+  ]
+}
+{% endschema %}
+
+<div class="header-inner shell" style="background-color: var(--color-green);">
+  <button 
+    id="mobile-nav-trigger" 
+    aria-label="Mobile Navigation Button" 
+    :aria-expanded="$store.globals.mobileMenuIsShowing"
+    x-data
+    @click="$store.globals.mobileMenuIsShowing = !$store.globals.mobileMenuIsShowing"
+  >
+    <svg viewBox="0 0 100 80" width="40" height="40">
+      <rect width="100" height="20"></rect>
+      <rect y="30" width="100" height="20"></rect>
+      <rect y="60" width="100" height="20"></rect>
+    </svg>
+  </button>
+  <nav 
+    id="mobile-nav"
+    aria-label="Mobile Navigation Overlay" 
+    role="Navigation"
+    :class="$store.globals.mobileMenuIsShowing ? 'open' : 'closed'"
+    x-data
+  >
+    <button @click="$store.globals.mobileMenuIsShowing = false">
+      Close
+    </button>
+    {% render 'mobile-menu' %}
+  </nav>
+
+  <a href="{{ routes.root_url }}" class="header-logo">
     Logo
   </a>
+  {% render 'header-menu' %}
 
-  {% render 'layout-menu' %}
+  <a 
+    href="{{ routes.cart_url }}" 
+    class="cart-icon-wrapper" 
+    >
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="22" 
+      height="22" 
+      fill="currentColor" 
+      class="bi bi-bag bi-bag-empty" 
+      viewBox="0 0 16 16"
+      >
+      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+    </svg>
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="22" 
+      height="22" 
+      fill="currentColor" 
+      class="bi bi-bag-fill" 
+      viewBox="0 0 16 16"
+      >
+      <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5z"/>
+    </svg>
+    <span data-ajax-cart-bind-state="cart.item_count"></span>
+  </a>
 
-  <div>
+  {% comment %}
+  // Output customer login links
+
+  <ul>
     {% if shop.customer_accounts_enabled %}
       {% if customer %}
         <a href="{{ routes.account_url }}">
@@ -17,21 +83,114 @@
         {{ 'action.register' | t | customer_register_link }}
       {% endif %}
     {% endif %}
-
-    <a href="{{ routes.cart_url }}">
-      {{ 'action.cart' | t }}
-    </a>
-  </div>
+  </ul>
+  {% endcomment %}
 </div>
 
-{% schema %}
-{
-  "name": "t:sections.header.name",
-  "settings": [
-    {
-      "type": "paragraph",
-      "content": "t:sections.header.settings.paragraph"
+<style>
+  #shopify-section-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+  }
+
+  .header .header-inner {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: white;
+    position: relative;
+  }
+
+  .header .header-logo {
+    color: white;
+    text-decoration: none;
+    font-size: 32px;
+    text-transform: uppercase;
+  }
+
+  #mobile-nav-trigger {
+    display: none;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
+    background: transparent;
+    border: 0;
+  }
+
+  #mobile-nav-trigger svg {
+    fill: white;
+    width: 26px;
+    height: auto;
+  }
+
+  #mobile-nav {
+    display: block;
+    padding: 30px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: green;
+    z-index: 100;
+    transition: all 300ms;
+    transform: translateX(-100%);
+  }
+
+  #mobile-nav.open {
+    transform: translateX(0%);
+  }
+
+  @media (max-width: 576px) {
+    .header .header-logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-  ]
-}
-{% endschema %}
+
+    #mobile-nav-trigger {
+      display: block;
+    }
+  }
+
+  .cart-icon-wrapper {
+    text-decoration: none; 
+    color: white; 
+    margin-left: auto; 
+    position: relative;
+  }
+
+  .cart-icon-wrapper span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -26%);
+    color: var(--color-green);
+    z-index: 5;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .bi-bag {
+    display: none;
+  }
+
+  .js-ajax-cart-not-empty .header .bi-bag-fill {
+    display: block;
+  }
+
+  .js-ajax-cart-empty .header .bi-bag-empty {
+    display: block;
+  }
+
+  .js-ajax-cart-empty .header .bi-bag-fill {
+    display: none;
+  }
+ </style>

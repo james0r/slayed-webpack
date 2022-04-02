@@ -1,0 +1,13 @@
+@import 'vars';
+@import 'mixins';
+
+.shopify-section-main-search {
+
+  &-inner {
+    padding: 15px;
+
+    @include sm {
+      padding: 90px 90px;
+    }
+  }
+}

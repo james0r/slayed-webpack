@@ -1,0 +1,14 @@
+@import 'mixins';
+
+.shopify-section-main-page-contact {
+  padding: 15px;
+
+  @include sm {
+    padding: 90px;
+  }
+
+  &-inner {
+    
+    
+  }
+}

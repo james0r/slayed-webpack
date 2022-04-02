@@ -30,12 +30,24 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.scss$/,
+        exclude: ["/node_modules"],
+        use: [
+          {
+            loader: 'file-loader',
+            options: { name: '[name].css'}
+          },
+          {
+            loader: "sass-loader"
+          },
+        ],
+      },
       ... (() => {
         const rules = []
 
         const loaders = [
           { test: /\.(css|postcss)$/i },
-          { test: /\.s[ac]ss$/i, loader: 'sass-loader' },
           { test: /\.less$/i, loader: 'less-loader' },
           { test: /\.styl$/i, loader: 'stylus-loader' }
         ]
