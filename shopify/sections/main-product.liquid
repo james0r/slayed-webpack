@@ -136,14 +136,14 @@
           <!-- Error messages appear here --> 
         </div>
         {%- if product.selected_or_first_available_variant.available -%}
-          <button 
+          <a 
             type="button" 
             class="btn inverted checkout-button" 
-            @click=""
+            :href="`/cart/${selectedVariant}:1`"
             x-show="showBuyNow"
           >
             Buy it now
-          </button>
+          </a>
         {%- endif -%}
       {%- endform -%}
 

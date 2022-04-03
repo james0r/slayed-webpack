@@ -15,14 +15,13 @@ document.body.addEventListener('keydown', function(event) {
 // Switch this flag to true to enable a11y debugging
 const a11yDebug = false
 
+function getKeyboardFocusableElements (element = document) {
+ return [...element.querySelectorAll(
+   'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])'
+ )]
+   .filter(el => !el.hasAttribute('disabled') && !el.getAttribute("aria-hidden"))
+}
 if (a11yDebug) {
-   function getKeyboardFocusableElements (element = document) {
-    return [...element.querySelectorAll(
-      'a[href], button, input, textarea, select, details,[tabindex]:not([tabindex="-1"])'
-    )]
-      .filter(el => !el.hasAttribute('disabled') && !el.getAttribute("aria-hidden"))
-  }
-  
   let focusable = getKeyboardFocusableElements()
   
   focusable.forEach((element) => {
