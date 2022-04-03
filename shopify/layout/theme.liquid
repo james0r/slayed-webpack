@@ -8,9 +8,7 @@
 
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <link rel="preload" href="{{ 'base.css' | asset_url }}" as="style">
-    <link rel="preload" href="{{ 'reset.static.css' | asset_url }}" as="style">
-    <link rel="preload" href="{{ 'header.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'main.css' | asset_url }}" as="style">
     <link rel="preload" href="{{ 'liquid-ajax-cart-v1.6.0.static.js' | asset_url }}" as="script">
     <link rel="preload" href="{{ 'bundle.js' | asset_url }}" as="script">
 
@@ -27,10 +25,8 @@
 
     {% render 'meta-tags' %}
     
-    {{ 'reset.static.css' | asset_url | stylesheet_tag }}
     {% render 'css-vars' %}
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    {{ 'header.css' | asset_url | stylesheet_tag }}
+    {{ 'main.css' | asset_url | stylesheet_tag }}
 
     <!-- header hook for Shopify plugins -->
     {{ content_for_header }}

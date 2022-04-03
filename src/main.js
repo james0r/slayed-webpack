@@ -9,13 +9,11 @@ import them here in order to compile them. If you would like to bundle
 files, you need to either add them as partials and then @import them in
 another file, or adjust the webpack config files.
 */
-import './scss/base.scss'
-import './scss/header.scss'
-import './scss/section-main-page-contact.scss'
-import './scss/section-main-search.scss'
-import './scss/section-main-cart.scss'
-import './scss/section-main-product.scss'
-import './scss/component-btn.scss'  
+import './scss/main.scss'
+import './scss/sections/main-page-contact.scss'
+import './scss/sections/main-search.scss'
+import './scss/sections/main-cart.scss'
+import './scss/sections/main-product.scss'
 
 window.Alpine = Alpine
 

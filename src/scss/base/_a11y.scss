@@ -1,0 +1,34 @@
+/* The default outline styling, for greatest accessibility. */
+/* You can skip this to just use the browser's defaults. */
+:focus {
+  outline: #08f auto 2px;
+}
+
+/* When mouse is detected, ALL focused elements have outline removed. */
+body.using-mouse :focus {
+  outline: none;
+}
+
+.visually-hidden, .skip-to-content-link {
+  position: absolute!important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+
+.skip-to-content-link:focus {
+  position: fixed !important;
+  top: 0;
+  width: auto;
+  height: auto;
+  left: 0;
+  clip: initial;
+  background: black;
+  color: white;
+  padding: 12px 19px;
+}

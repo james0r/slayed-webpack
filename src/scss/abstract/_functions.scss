@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+@use 'sass:math';
+
+/// Converts pixels to rem units
+/// @param {number} $value - The value in pixels
+/// @return {number} Rem units
+@function toRem($value) {
+  $remValue: math.div($value, 16) + rem; 
+  @return $remValue;
+}

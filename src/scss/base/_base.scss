@@ -1,0 +1,28 @@
+// -----------------------------------------------------------------------------
+// This is a catch all file mainly for styles applied to :root, html, body
+// -----------------------------------------------------------------------------
+
+:root {
+  --slayed-body-background-color: $body-background-color;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: var(--color-body-background);
+  margin: 0;
+  padding: 0;
+
+  &.lock-scroll {
+    height: 100vw;
+    overflow: hidden;
+  }
+}
+
+// Alpine.js reveal-on-load attribute
+[x-cloak] {
+  display: none;
+}

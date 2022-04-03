@@ -8,8 +8,7 @@
   }
 {% endschema %}
 
-{{ 'section-main-product.css' | asset_url | stylesheet_tag }}
-{{ 'component-btn.css' | asset_url | stylesheet_tag }}
+{{ 'main-product.css' | asset_url | stylesheet_tag }}
 
 <script>
   window.variantsMap = [
@@ -242,7 +241,7 @@
   }
 
   .product-section .shopify-section-main-product-inner .flex .info fieldset input:checked + label {
-    background-color: var(--color-green);
+    background-color: var(--brand-color);
     color: white;
   }
   .product-section .shopify-section-main-product-inner .flex .info .quantity-row label {

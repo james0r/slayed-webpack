@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file is for general layout styles that are too brief to warrant a file
+// -----------------------------------------------------------------------------
+
+main {
+  margin-top: 60px;
+}
+
+.shell {
+  margin: auto;
+  max-width: $shell-width;
+}
