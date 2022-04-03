@@ -5,3 +5,17 @@
 <script type="module">
   import '{{ "liquid-ajax-cart-v1.10.0.static.js" | asset_url }}';
 </script>
+
+<script type="module">
+  import { subscribeToCartAjaxRequests } from '{{ 'liquid-ajax-cart-v1.10.0.static.js' | asset_url }}';
+  subscribeToCartAjaxRequests((requestState, subscribeToResult) => {
+    if (requestState.requestType === 'add') {
+      subscribeToResult(requestState => {
+        if (requestState.responseData?.ok) {
+            // document.body.querySelector('.minicart').classList.add('animate-red')
+            Alpine.store('globals').minicartIsShowing = true
+        }
+      })
+    }
+  });
+</script>
