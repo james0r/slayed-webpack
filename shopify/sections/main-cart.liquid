@@ -41,11 +41,13 @@
             {% if item.quantity == 1 %}
             <span>-</span>
             {% else %}
-            <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | minus: 1 | at_least: 1 }}"
+            <a data-ajax-cart-request-button href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | minus: 1 | at_least: 1 }}"
               style="text-decoration: none;">-</a>
             {% endif %}
             <input 
-              type="number" value="{{ item.quantity }}" 
+              type="number" 
+              value="{{ item.quantity }}"
+              name="updates[]" 
               data-ajax-cart-quantity-input="{{ item.key }}"
               style="width: 40px;" 
             />
@@ -56,7 +58,7 @@
               role="alert"
               aria-busy="false"
             >
-            <a href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}"
+            <a data-ajax-cart-request-button href="{{ routes.cart_change_url }}?id={{ item.key }}&quantity={{ item.quantity | plus: 1 }}"
               style="text-decoration: none;">+</a>
           </td>
           <td>

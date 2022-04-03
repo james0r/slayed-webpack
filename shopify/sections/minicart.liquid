@@ -38,7 +38,7 @@
         </div>
         <p class="price">{{ item.price | money }}</p>
         <p class="remove">
-          <a href="{{ item.url_to_remove }}">
+          <a href="{{ item.url_to_remove }}" data-ajax-cart-request-button>
             <i class="fa fa-trash-o"></i>
             Remove from cart
           </a>
