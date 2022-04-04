@@ -10,6 +10,9 @@
   import { subscribeToCartAjaxRequests } from '{{ 'liquid-ajax-cart-v1.10.0.static.js' | asset_url }}';
   subscribeToCartAjaxRequests((requestState, subscribeToResult) => {
     if (requestState.requestType === 'add') {
+      // Clear any existing errors
+      document.querySelectorAll('[data-ajax-cart-messages="form"]').forEach(element => element.innerHTML = '')
+
       subscribeToResult(requestState => {
         if (requestState.responseData?.ok) {
             // document.body.querySelector('.minicart').classList.add('animate-red')
