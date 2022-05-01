@@ -1,18 +1,16 @@
 {% schema %}
-  {
-    "name": "product",
-    "class": "product-section",
-    "settings": [
-       
-    ]
-  }
+{
+  "name": "product",
+  "class": "product-section",
+  "settings": []
+}
 {% endschema %}
 
 {{ 'main-product.css' | asset_url | stylesheet_tag }}
 
 <script>
   window.productVariants = [
-    {% for variant in product.variants %}
+    {% for variant in product.variants %} 
       {
         id: {{variant.id }},
         available: {{variant.available}},
@@ -25,11 +23,7 @@
   ]
 </script>
 
-{% assign sv_quantity = 0 %}
-{% if product.selected_or_first_available_variant.available %}
-  {% assign sv = product.selected_or_first_available_variant %}
-  {% assign sv_quantity = 1 %}
-{% endif %}
+{% assign sv = product.selected_or_first_available_variant %}
 
 <div 
   class="shopify-section-main-product-inner shell" 
@@ -38,16 +32,19 @@
   x-data="product"
   x-init="variants = window.productVariants, 
           selectedVariant = {{ sv.id }}, 
-          quantity = {{ sv_quantity }},
-          selectedVariantPrice = {{ sv.price }}
-          {% if sv.option1 %}option1 = '{{ sv.option1 }}'{% endif %} 
-          {% if sv.option2 %}, option2 = '{{ sv.option2 }}'{% endif %}
-          {% if sv.option3 %}, option3 = '{{ sv.option3 }}'{% endif %}"
+          quantity = {{ sv.inventory_quantity }},
+          selectedVariantPrice = {{ sv.price }},
+          {% if sv.option1 %}option1 = '{{ sv.option1 }}'{% endif %}{% if sv.option2 %},{% endif %}
+          {% if sv.option2 %}option2 = '{{ sv.option2 }}'{% endif %}{% if sv.option3 %},{% endif %}
+          {% if sv.option3 %}option3 = '{{ sv.option3 }}'{% endif %}"
 >
   <a class="skip-to-content-link" href="#product-info-{{ section.id }}">
     Skip to product info
   </a>
-  <div class="flex pdp-main">
+  <div class="flex pdp-main" style="position: relative;">
+    <span style="position: absolute; top: 0; left: 0; z-index: 1;">
+      {{ product.selected_or_first_available_variant.id }}
+    </span>
     <div class="media">
       <div class="image-wrapper" style="padding-top: 137%;">
         {%- if product.selected_or_first_available_variant.image != null -%}
@@ -64,7 +61,7 @@
       <h1>{{ product.title }}</h1>
       <dl>
         <dt class="visually-hidden">Regular Price</dt> 
-        <dd x-text="$moneyWithCurrency(selectedVariantPrice)"></dd>
+        <dd x-text="$money(selectedVariantPrice)">{{ product.selected_or_first_available_variant.price | money }}</dd>
         <dd></dd>
       </dl>
 

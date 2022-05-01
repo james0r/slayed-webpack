@@ -16,7 +16,7 @@
       subscribeToResult(requestState => {
         if (requestState.responseData?.ok) {
             // document.body.querySelector('.minicart').classList.add('animate-red')
-            Alpine.store('globals').minicartIsShowing = true
+            Alpine.store('globals').isMinicartVisible = true
         }
       })
     }

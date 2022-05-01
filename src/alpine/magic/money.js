@@ -1,7 +1,11 @@
 export default {
-  name: 'moneyWithoutTrailingZeros',
+  name: 'money',
   callback: (el, { Alpine }) => {
     return  (cents, format) => {
+      if (format) {
+        format = '${{' + format + '}}'
+      }
+      
       if (typeof cents == 'string') { cents = cents.replace('.',''); }
       var value = '';
       var placeholderRegex = /\{\{\s*(\w+)\s*\}\}/;
@@ -41,14 +45,8 @@ export default {
           value = formatWithDelimiters(cents, 0, '.', ',');
           break;
       }
-
-      let result = formatString.replace(placeholderRegex, value)
-
-      if (result.slice(-2) === '00') {
-        return result.substring(0, result.length - 3)
-      } else {
-        return result
-      }    
+    
+      return formatString.replace(placeholderRegex, value);
     }
   }
 }

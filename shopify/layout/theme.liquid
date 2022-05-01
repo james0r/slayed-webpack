@@ -35,7 +35,7 @@
   <body 
     class="{{ template | handleize }}-template using-mouse"
     x-data
-    x-bind:class="$store.globals.mobileMenuIsShowing && 'lock-scroll'"
+    x-bind:class="$store.globals.isMobileMenuVisible && 'lock-scroll'"
   >
     <a class="skip-to-content-link" href="#main-content">
       Skip to content
@@ -45,8 +45,8 @@
     <div 
       class="minicart-wrapper"
       x-data 
-      x-show="$store.globals.minicartIsShowing" 
-      x-on:click.outside="$store.globals.minicartIsShowing = false"
+      x-show="$store.globals.isMinicartVisible" 
+      x-on:click.outside="$store.globals.isMinicartVisible = false"
       x-transition:enter="transition ease-out duration-300"
       x-transition:enter-start="off-screen-right"
       x-transition:enter-end="right-50"
@@ -54,7 +54,7 @@
       x-transition:leave-start="right-50"
       x-transition:leave-end="off-screen-right"
       x-cloak 
-      :aria-hidden="$store.globals.minicartIsShowing ? 'false' : 'true'"
+      :aria-hidden="$store.globals.isMinicartVisible ? 'false' : 'true'"
       aria-modal="true"
       role="dialog" 
       >

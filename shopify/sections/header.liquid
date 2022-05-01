@@ -13,9 +13,9 @@
   <button 
     id="mobile-nav-trigger" 
     aria-label="Mobile Navigation Button" 
-    :aria-expanded="$store.globals.mobileMenuIsShowing"
+    :aria-expanded="$store.globals.isMobileMenuVisible"
     x-data
-    @click="$store.globals.mobileMenuIsShowing = !$store.globals.mobileMenuIsShowing"
+    @click="$store.globals.isMobileMenuVisible = !$store.globals.isMobileMenuVisible"
   >
     <svg viewBox="0 0 100 80" width="40" height="40">
       <rect width="100" height="20"></rect>
@@ -27,10 +27,10 @@
     id="mobile-nav"
     aria-label="Mobile Navigation Overlay" 
     role="Navigation"
-    :class="$store.globals.mobileMenuIsShowing ? 'open' : 'closed'"
+    :class="$store.globals.isMobileMenuVisible ? 'open' : 'closed'"
     x-data
   >
-    <button @click="$store.globals.mobileMenuIsShowing = false">
+    <button @click="$store.globals.isMobileMenuVisible = false">
       Close
     </button>
     {% render 'mobile-menu' %}

@@ -27,11 +27,15 @@
     <div>
       Alpine Demo Output (Should be removed in production)
       <span x-test-directive="Hello World">Test Directive</span>
-      <span x-text="$moneyWithoutTrailingZeros(2000)"></span>
+      <span x-text="$money(2000, 'amount')"></span>
     </div>
 </div>
 
 <style>
+  footer {
+    padding-bottom: 70px;
+  }
+
   .footer-inner {
     padding-left: 20px;
     padding-right: 20px;

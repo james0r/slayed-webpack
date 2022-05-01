@@ -3,8 +3,8 @@ export default {
   store() {
     return {
       authorWebsite: 'https://jamesauble.com',
-      mobileMenuIsShowing: false,
-      minicartIsShowing: false
+      isMobileMenuVisible: false,
+      isMinicartVisible: false
     }
   }
 }
