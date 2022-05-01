@@ -15,7 +15,7 @@
     aria-label="Mobile Navigation Button" 
     :aria-expanded="$store.globals.isMobileMenuVisible"
     x-data
-    @click="$store.globals.isMobileMenuVisible = !$store.globals.isMobileMenuVisible"
+    @click="$store.globals.openMobileMenu()"
   >
     <svg viewBox="0 0 100 80" width="40" height="40">
       <rect width="100" height="20"></rect>
@@ -30,7 +30,7 @@
     :class="$store.globals.isMobileMenuVisible ? 'open' : 'closed'"
     x-data
   >
-    <button @click="$store.globals.isMobileMenuVisible = false">
+    <button @click="$store.globals.closeMobileMenu()">
       Close
     </button>
     {% render 'mobile-menu' %}
@@ -142,6 +142,7 @@
     z-index: 100;
     transition: all 300ms;
     transform: translateX(-100%);
+    overflow: auto;
   }
 
   #mobile-nav.open {
