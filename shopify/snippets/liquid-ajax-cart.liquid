@@ -3,11 +3,11 @@
 </script>
 
 <script type="module">
-  import '{{ "liquid-ajax-cart-v1.10.0.static.js" | asset_url }}';
-</script>
+  import '{{ "liquid-ajax-cart-v1.10.1.static.js" | asset_url }}';
+</script> 
 
 <script type="module">
-  import { subscribeToCartAjaxRequests } from '{{ 'liquid-ajax-cart-v1.10.0.static.js' | asset_url }}';
+  import { subscribeToCartAjaxRequests } from '{{ 'liquid-ajax-cart-v1.10.1.static.js' | asset_url }}';
   subscribeToCartAjaxRequests((requestState, subscribeToResult) => {
     if (requestState.requestType === 'add') {
       // Clear any existing errors
