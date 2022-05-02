@@ -29,6 +29,7 @@
     role="Navigation"
     :class="$store.globals.isMobileMenuVisible ? 'open' : 'closed'"
     x-data
+    x-cloak
   >
     <button @click="$store.globals.closeMobileMenu()">
       Close
