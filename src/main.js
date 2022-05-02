@@ -17,17 +17,16 @@ import './scss/sections/main-product.scss'
 
 window.Alpine = Alpine
 
-// Declare our namespace on the window
-const namespace = 'slayed'
+// Declare our ns on the window
+const ns = 'slayed'
 
-// Define our namespace and helpers property
-window[namespace] = {
-  helpers: {}
-}
+// Define our ns and helpers property
+window[ns] = (window[ns] || {})
+window[ns].helpers = helpers
 
-// Map helper functions to window[namespace].helpers
+// Map helper functions to window[ns].helpers
 for (const [key, value] of Object.entries(helpers)) {
-  window[namespace].helpers[key] = value
+  window[ns].helpers[key] = value
 }
 
 // Register Alpine plugins

@@ -9,7 +9,8 @@
 {{ 'main-product.css' | asset_url | stylesheet_tag }}
 
 <script>
-  window.productVariants = [
+  window.slayed = (window.slayed || {})
+  window.slayed.variants = [
     {% for variant in product.variants %} 
       {
         id: {{variant.id }},
@@ -30,15 +31,7 @@
   data-handle="{{ product.handle }}" 
   data-id="{{ product.id }}" 
   x-data="product"
-  x-init="variants = window.productVariants, 
-          selectedVariant = {{ sv.id }}, 
-          quantity = {{ sv.inventory_quantity }},
-          selectedVariantPrice = {{ sv.price }},
-          addToCartButtonText = {% if sv.inventory_quantity == 0 %}'Out of stock'{% else %}'Add to cart'{% endif %},
-          showBuyNow = {% if sv.inventory_quantity == 0 %}false{% else %}true{% endif %},
-          {% if sv.option1 %}option1 = '{{ sv.option1 }}'{% endif %}{% if sv.option2 %},{% endif %}
-          {% if sv.option2 %}option2 = '{{ sv.option2 }}'{% endif %}{% if sv.option3 %},{% endif %}
-          {% if sv.option3 %}option3 = '{{ sv.option3 }}'{% endif %}"
+  x-init="init(window.slayed.variants, {{ sv.id }})"
 >
   <a class="skip-to-content-link" href="#product-info-{{ section.id }}">
     Skip to product info
