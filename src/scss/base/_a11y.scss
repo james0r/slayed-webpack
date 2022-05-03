@@ -1,6 +1,6 @@
 /* The default outline styling, for greatest accessibility. */
 /* You can skip this to just use the browser's defaults. */
-:focus {
+:focus, :focus-visible {
   outline: #08f auto 2px;
 }
 

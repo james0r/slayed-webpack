@@ -56,15 +56,14 @@
                   x-model="selectedOption{{ option.position }}" 
                   name="{{ option.name }}" 
                   {% if option.selected_value == value %}checked{% endif %}
-                  @change="onOptionChangeHandler($el)"
+                  @change="onOptionChangeHandler($el, '{{ option.name }}-{{ value }}')"
                   data-section="{{ section.id }}"
                   data-url="{{ product.url }}"
-                  tabindex="-1"
+                  :data-index="{{forloop.index0}}"
+                  tabindex="{% if option.selected_value == value %}0{% else %}-1{% endif %}"
                   >
                   <label  
-                  for="{{ option.name }}-{{ value }}"
-                  @keyup.enter="$el.click()"
-                  tabindex="0"
+                    for="{{ option.name }}-{{ value }}"
                   >
                     {{ value }}
                   </label>
@@ -210,6 +209,10 @@
     letter-spacing: 1px;
     font-size: 14px;
     cursor: pointer; 
+  }
+
+  .product-section .shopify-section-main-product-inner .flex .info fieldset input:focus + label {
+    outline: #08f auto 2px;
   }
 
   .product-section .shopify-section-main-product-inner .flex .info fieldset label[data-unavailable="true"],
