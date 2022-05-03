@@ -5,12 +5,12 @@ export default {
       quantity: 0,
       selectedVariantPrice: 0,
       selectedVariant: null,
+      selectedOption1: null,
+      selectedOption2: null,
+      selectedOption3: null,
       addToCartButtonText: 'Add to cart', 
       showBuyNow: true,
       variants: [],
-      option1: null,
-      option2: null,
-      option3: null,
       init(variants, selectedVariantId) {
         // Return if not explicitly called by component
         if (!selectedVariantId) return
@@ -24,24 +24,26 @@ export default {
           return variant.id == selectedVariantId
         })
 
-        // Set button text and visibility
+        // Set button text, button visibility, and quantity input
         if (variantSelected.available) {
+          this.quantity = 1
           this.addToCartButtonText = 'Add to cart'
           this.showBuyNow = true
         } else {
+          this.quantity = 0
           this.addToCartButtonText = 'Out of stock'
           this.showBuyNow = false
         }
 
         // Set variant option values if they exist
         if (variantSelected.option1) {
-          this.option1 = variantSelected.option1
+          this.selectedOption1 = variantSelected.option1
         }
         if (variantSelected.option2) {
-          this.option2 = variantSelected.option2
+          this.selectedOption2 = variantSelected.option2
         }
         if (variantSelected.option3) {
-          this.option3 = variantSelected.option3
+          this.selectedOption3 = variantSelected.option3
         }
 
         // Set selected variant price
@@ -53,20 +55,23 @@ export default {
         let variantExists = false 
         
         this.variants.forEach((variant) => {
-          if (variant.option1 == this.option1 && variant.option2 == this.option2 && variant.option3 == this.option3) {
+          if (variant.option1 == this.selectedOption1 && variant.option2 == this.selectedOption2 && variant.option3 == this.selectedOption3) {
             this.selectedVariant = variant.id
             this.selectedVariantPrice = variant.price
             variantExists = true
             
             window.history.replaceState({ }, '', `${el.dataset.url}?variant=${this.selectedVariant}`);
 
-            if (!variant.available) {
-              this.addToCartButtonText = 'Out of stock'
-              this.showBuyNow = false
-            } else {
-              this.addToCartButtonText = 'Add to cart'
-              this.showBuyNow = true
-            }
+           // Set button text, button visibility, and quantity input
+           if (variant.available) {
+            this.quantity = 1
+            this.addToCartButtonText = 'Add to cart'
+            this.showBuyNow = true
+          } else {
+            this.quantity = 0
+            this.addToCartButtonText = 'Out of stock'
+            this.showBuyNow = false
+          }
 
             this.replaceSection(el)
           } 
@@ -76,6 +81,7 @@ export default {
           // this.replaceSection(el)
           this.addToCartButtonText = 'Unavailable'
           this.showBuyNow = false
+          this.quantity = 0
         }
       },
       replaceSection(el) {
