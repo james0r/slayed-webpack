@@ -59,10 +59,15 @@
                   @change="onOptionChangeHandler($el)"
                   data-section="{{ section.id }}"
                   data-url="{{ product.url }}"
-                >
-                <label  
+                  tabindex="-1"
+                  >
+                  <label  
                   for="{{ option.name }}-{{ value }}"
-                  >{{ value }}</label>
+                  @keyup.enter="$el.click()"
+                  tabindex="0"
+                  >
+                    {{ value }}
+                  </label>
               {% endfor %}
             </fieldset>
           {% endfor %}
