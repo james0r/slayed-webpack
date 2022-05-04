@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 :root {
-  --slayed-body-background-color: $body-background-color;
+  --slayed-body-background-color: #{$body-background-color};
 }
 
 html {
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background: var(--color-body-background);
+  background: $body-background-color;
   margin: 0;
   padding: 0;
 
