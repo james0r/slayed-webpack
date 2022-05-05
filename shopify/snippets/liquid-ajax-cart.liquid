@@ -7,7 +7,7 @@
 </script> 
 
 <script type="module">
-  import { subscribeToCartAjaxRequests } from '{{ 'liquid-ajax-cart-v1.10.1.static.js' | asset_url }}';
+  import { subscribeToCartAjaxRequests, subscribeToCartStateUpdate, cartRequestGet } from '{{ 'liquid-ajax-cart-v1.10.1.static.js' | asset_url }}';
   subscribeToCartAjaxRequests((requestState, subscribeToResult) => {
     if (requestState.requestType === 'add') {
       // Clear any existing errors
@@ -21,4 +21,14 @@
       })
     }
   });
+
+  subscribeToCartStateUpdate((state) => {
+    if (typeof Alpine != 'undefined') {
+      Alpine.store('liquidAjaxCart', {
+        state: state
+      })      
+    }
+  })
+
+  cartRequestGet()
 </script>

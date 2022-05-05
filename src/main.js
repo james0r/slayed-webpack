@@ -3,17 +3,21 @@ import helpers from './helpers.js'
 import intersect from '@alpinejs/intersect'
 import focus from '@alpinejs/focus'
 import './a11y.js'
+import pulseonclick from './alpine/plugins/pulseonclick'
 
-/* SASS files are not globbed. You must manually
-import them here in order to compile them. If you would like to bundle
-files, you need to either add them as partials and then @import them in
-another file, or adjust the webpack config files.
+/* 
+  SASS files are not globbed. 
+  Each import will output a bundle file of the same name.
+  In Slayed, progressive styles are added for each rendered Shopify section.
+  Each Shopify section has a corresponding SCSS/CSS file
+  that is linked at the top of each Shopify section liquid file.
 */
 import './scss/main.scss'
 import './scss/sections/main-page-contact.scss'
 import './scss/sections/main-search.scss'
 import './scss/sections/main-cart.scss'
 import './scss/sections/main-product.scss'
+import './scss/sections/accounts.scss'
 
 window.Alpine = Alpine
 
@@ -30,6 +34,7 @@ for (const [key, value] of Object.entries(helpers)) {
 }
 
 // Register Alpine plugins
+Alpine.plugin(pulseonclick)
 Alpine.plugin(intersect)
 Alpine.plugin(focus)
 

@@ -9,54 +9,62 @@
   </div>
   <div class="item-count-message">
     You have
-    <span class="count" style="font-weight: 600" x-data>{{ cart.item_count }}</span>
+    <span class="count" style="font-weight: 600" x-data>{{ cart.item_count }}
+    </span>
     <span x-data></span>
     in your cart!
   </div>
-  <hr />
+  <hr/>
   <ul class="items-list" data-ajax-cart-section-scroll>
-
     {% for item in cart.items %}
-    <li class="item">
-      <div class="product-thumb-wrapper">
-        <img class="product-thumb" src="{{ item.image | img_url: '100x' }}" alt="{{ item.title }}" />
-      </div>
-      <div class="item-details">
-        <h4 class="title">
-          {{ item.title | truncatewords: 5 }}
-        </h4>
-        <div class="options">
-          {% for option in item.options_with_values %}
-          <p class="option" data-option-name="{{ option.name }}">
-            <span style="font-weight: 600">{{ option.name }}: </span>
-            <span>{{ option.value }}</span>
+      <li class="item">
+        <div class="product-thumb-wrapper">
+          <img class="product-thumb" src="{{ item.image | img_url: '100x' }}" alt="{{ item.title }}" />
+        </div>
+        <div class="item-details">
+          <h4 class="title">
+            {{ item.title | truncatewords: 5 }}
+          </h4>
+          <div class="options">
+            {% for option in item.options_with_values %}
+              <p class="option" data-option-name="{{ option.name }}">
+                <span style="font-weight: 600">{{ option.name }} :
+                </span>
+                <span>{{ option.value }}
+                </span>
+              </p>
+            {% endfor %}
+          </div>
+          <div class="quantity-row">
+            <span style="font-weight: bold;">Quantity:
+            </span>
+            <span>{{ item.quantity }}
+            </span>
+          </div>
+          <p class="price">{{ item.price | money }}
           </p>
-          {% endfor %}
+          <p class="remove">
+            <a href="{{ item.url_to_remove }}" data-ajax-cart-request-button>
+              <i class="fa fa-trash-o"></i>
+              Remove from cart
+            </a>
+          </p>
         </div>
-        <div class="quantity-row">
-          <span style="font-weight: bold;">Quantity: </span><span>{{ item.quantity }}</span>
-        </div>
-        <p class="price">{{ item.price | money }}</p>
-        <p class="remove">
-          <a href="{{ item.url_to_remove }}" data-ajax-cart-request-button>
-            <i class="fa fa-trash-o"></i>
-            Remove from cart
-          </a>
-        </p>
-      </div>
-    </li>
+      </li>
     {% endfor %}
 
   </ul>
-  <hr />
+  <hr/>
   <div class="subtotal">
-    <p class="title">Subtotal</p>
-    <p class="amount">{{ cart.items_subtotal_price | money }}</p>
+    <p class="title">Subtotal
+    </p>
+    <p class="amount">{{ cart.items_subtotal_price | money }}
+    </p>
   </div>
-  <a class="cart-link" href="{{ routes.cart_url }}">View Cart Details</a>
+  <a class="cart-link" href="{{ routes.cart_url }}">View Cart Details
+  </a>
 
 </div>
-
 
 <style>
   /* Animation classes */
@@ -86,7 +94,7 @@
     transform: translateX(0%);
   }
 
-  @media (max-width: 576px) {
+  @media(max-width: 576px) {
     .right-50 {
       right: 20px;
       transform: translateX(0%);
@@ -101,7 +109,7 @@
     z-index: 100;
   }
 
-  @media (max-width: 576px) {
+  @media(max-width: 576px) {
     .minicart-wrapper {
       right: 20px;
     }
@@ -113,7 +121,7 @@
     padding: 20px;
     background: #fff;
     border-radius: 6px;
-    box-shadow: 0px 30px 130px -8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 30px 130px -8px rgba(0, 0, 0, 0.25);
   }
 
   .minicart .cart-link {
@@ -222,7 +230,7 @@
   .minicart .item .item-details .title {
     font-size: 0.9em;
     font-weight: 600;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 6px;
   }
 
@@ -231,7 +239,7 @@
   }
 
   .minicart .item .item-details .option {
-    margin: 0 0 2px 0;
+    margin: 0 0 2px;
     font-size: 0.8rem;
   }
 
@@ -240,12 +248,12 @@
   }
 
   .minicart .item .item-details .quantity-row span {
-    margin: 0 0 2px 0;
+    margin: 0 0 2px;
     font-size: 0.8rem;
   }
 
   .minicart .item .item-details .option:last-of-type {
-    margin-bottom: 0px;
+    margin-bottom: 0;
   }
 
   .minicart .item .item-details .price {

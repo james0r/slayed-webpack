@@ -1,0 +1,209 @@
+.account-login-inner,
+.account-register-inner,
+.account-reset-password-inner {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 156px 20px 236px;
+  position: relative;
+}
+@media (max-width: 576px) { 
+  .account-login-inner,
+  .account-register-inner,
+  .account-reset-password-inner {
+    padding: 50px 20px 80px;
+  }
+}
+.account-login-inner .about-us-decagon,
+.account-register-inner .about-us-decagon,
+.account-reset-password-inner .about-us-decagon {
+  height: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(35%, -32%);
+  width: 19%;
+  z-index: -1;
+}
+.account-login-inner .nonagon,
+.account-register-inner .nonagon,
+.account-reset-password-inner .nonagon {
+  bottom: 0;
+  height: auto;
+  left: 0;
+  position: absolute;
+  transform: translate(-39%, 37%);
+  width: 22%;
+  z-index: -1;
+}
+.account-login-inner h1,
+.account-register-inner h1,
+.account-reset-password-inner h1 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 48px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.account-login-inner form,
+.account-register-inner form,
+.account-reset-password-inner form {
+  max-width: 100%;
+  width: 446px;
+}
+.account-login-inner form > div,
+.account-register-inner form > div,
+.account-reset-password-inner form > div {
+  margin-bottom: 16px;
+}
+.account-login-inner form input::placeholder,
+.account-login-inner form label,
+.account-register-inner form input::placeholder,
+.account-register-inner form label,
+.account-reset-password-inner form input::placeholder,
+.account-reset-password-inner form label {
+  color: var(--color-black);
+  font-family: Degular, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  opacity: 0.5;
+}
+.account-login-inner form input,
+.account-register-inner form input,
+.account-reset-password-inner form input {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: 1px solid var(--color-black);
+  padding: 13px 0 13px 20px;
+  width: 100%;
+}
+.account-login-inner form .password,
+.account-register-inner form .password,
+.account-reset-password-inner form .password {
+  position: relative;
+}
+.account-login-inner form .password label,
+.account-register-inner form .password label,
+.account-reset-password-inner form .password label {
+  left: 20px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.account-login-inner form #accepts_marketing,
+.account-register-inner form #accepts_marketing,
+.account-reset-password-inner form #accepts_marketing {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.account-login-inner form #accepts_marketing label,
+.account-register-inner form #accepts_marketing label,
+.account-reset-password-inner form #accepts_marketing label {
+  position: relative;
+  top: -3px;
+}
+.account-login-inner form #accepts_marketing input,
+.account-register-inner form #accepts_marketing input,
+.account-reset-password-inner form #accepts_marketing input {
+  height: 22px;
+  margin: 0 12px 0 0;
+  max-height: 22px;
+  max-width: 22px;
+  min-height: 22px;
+  min-width: 22px;
+  padding: 0;
+  position: relative;
+  width: 22px;
+}
+.account-login-inner form #accepts_marketing input:checked:after,
+.account-register-inner form #accepts_marketing input:checked:after,
+.account-reset-password-inner form #accepts_marketing input:checked:after {
+  background: var(--color-black);
+  bottom: 0;
+  content: '';
+  height: calc(100% - 2px);
+  left: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 2px);
+}
+.account-login-inner form .submit input,
+.account-register-inner form .submit input,
+.account-reset-password-inner form .submit input {
+  background: var(--color-black);
+  border-radius: 50px;
+  color: var(--color-foreground-white);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  padding-left: 0;
+}
+@media (max-width: 360px) {
+  .account-login-inner form .submit input,
+  .account-register-inner form .submit input,
+  .account-reset-password-inner form .submit input {
+    padding: 8px 0;
+  }
+}
+.account-login-inner .account-inquiry a,
+.account-login-inner .account-inquiry span,
+.account-register-inner .account-inquiry a,
+.account-register-inner .account-inquiry span,
+.account-reset-password-inner .account-inquiry a,
+.account-reset-password-inner .account-inquiry span {
+  font-size: 14px;
+  font-weight: 500;
+}
+.account-login-inner .account-inquiry a,
+.account-register-inner .account-inquiry a,
+.account-reset-password-inner .account-inquiry a {
+  color: var(--color-blue);
+}
+.account-login-inner .forgot-password,
+.account-register-inner .forgot-password,
+.account-reset-password-inner .forgot-password {
+  margin-top: 16px;
+}
+.account-login-inner .forgot-password a,
+.account-register-inner .forgot-password a,
+.account-reset-password-inner .forgot-password a {
+  color: var(--color-black);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.account-login-inner .forgot-password a:active,
+.account-login-inner .forgot-password a:hover,
+.account-register-inner .forgot-password a:active,
+.account-register-inner .forgot-password a:hover,
+.account-reset-password-inner .forgot-password a:active,
+.account-reset-password-inner .forgot-password a:hover {
+  color: var(--color-blue);
+}
+.account-login-inner .cancel-wrapper button,
+.account-register-inner .cancel-wrapper button,
+.account-reset-password-inner .cancel-wrapper button {
+  -webkit-appearance: none;
+  appearance: none;
+  -moz-appearance: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+}
+.account-login-inner .cancel-wrapper button:active,
+.account-login-inner .cancel-wrapper button:hover,
+.account-register-inner .cancel-wrapper button:active,
+.account-register-inner .cancel-wrapper button:hover,
+.account-reset-password-inner .cancel-wrapper button:active,
+.account-reset-password-inner .cancel-wrapper button:hover {
+  color: var(--color-blue);
+}
