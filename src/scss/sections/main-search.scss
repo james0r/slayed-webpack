@@ -1,9 +1,30 @@
 @import '../abstract/index';
 
-.-search {
-  padding: 90px 20px;
+.search {
+  padding: 20px;
 
   &-inner {
 
+    h1 {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form[action="/search"] {
+      margin: auto;
+      max-width: max-content;
+      margin-bottom: 40px;
+    }
+
+    .pagination-nav {
+      margin: auto;
+      max-width: max-content;
+      margin-top: 40px;
+    }
+
+    .pagination {
+      display: flex;
+      gap: 10px;
+    }
   }
 }

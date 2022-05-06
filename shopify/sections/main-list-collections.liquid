@@ -13,15 +13,7 @@
   <h1>
     Collections
   </h1>
-  <ul class="collections-list">
-    {% for collection in collections %}
-    <li>
-      <a href="{{ collection.url }}">
-        {{ collection.title }}
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
+  {% render 'collections-list' %}
 
   <div class="grid-wrapper">
     {%- paginate collection.products by 12 -%}
@@ -103,16 +95,6 @@
 
   .list-collections {
     padding: 20px;
-  }
-
-  .list-collections .collections-list {
-    display: flex;
-    justify-content: center;
-  }
-
-  .list-collections .collections-list li + li {
-    margin-left: 1rem;
-    margin-bottom: 40px;
   }
 
   .product-grid {
