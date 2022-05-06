@@ -1,27 +1,40 @@
+import {
+  subscribeToCartAjaxRequests,
+  subscribeToCartStateUpdate,
+  cartRequestGet,
+} from 'liquid-ajax-cart'
+
 export default {
   name: 'liquidAjaxCart',
   store() {
     return {
-      state: {
-        cart: {
-          attributes: {},
-          cart_level_discount_applications: [],
-          currency: 'USD',
-          item_count: 0,
-          items: [],
-          note: null,
-          original_total_price: 0,
-          requires_shipping: null,
-          token: '',
-          total_discount: 0,
-          total_price: 0,
-          total_weight: 0
-        },
-        status: {
-          cartStateSet: false,
-          requestInProgress: false
-        }
-      }
+      init() {
+        document.addEventListener('alpine:init', () => {
+          const Alpine = window.Alpine
+
+          subscribeToCartAjaxRequests((requestState, subscribeToResult) => {
+            if (requestState.requestType === 'add') {
+              document
+                .querySelectorAll('[data-ajax-cart-messages="form"]')
+                .forEach((element) => (element.innerHTML = ''))
+
+              subscribeToResult((requestState) => {
+                if (requestState.responseData?.ok) {
+                  Alpine.store('globals').isMinicartVisible = true
+                }
+              })
+            }
+          })
+
+          subscribeToCartStateUpdate((state) => {
+            Alpine.store('liquidAjaxCart', {
+              state: state,
+            })
+          })
+
+          cartRequestGet()
+        })
+      },
     }
-  }
+  },
 }

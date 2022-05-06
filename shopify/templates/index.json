@@ -3,12 +3,12 @@
     "main": {
       "type": "main-index"
     },
-    "main-collection": {
-      "type": "main-collection"
+    "featured-product-grid": {
+      "type": "featured-product-grid"
     }
-  },
+  }, 
   "order": [
     "main",
-    "main-collection"
+    "featured-product-grid"
   ]
 }

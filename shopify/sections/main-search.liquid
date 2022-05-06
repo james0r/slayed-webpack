@@ -1,7 +1,7 @@
 {% schema %}
   {
     "name": "Search",
-    "class": "search-template",
+    "class": "search",
     "settings": [
        
     ]
@@ -15,7 +15,7 @@
 
 {{ 'main-search.css' | asset_url | stylesheet_tag }}
 
-<div class="shopify-section-main-search-inner main-container">
+<div class="search-inner shell">
   {% if search.performed %}
     <h1>Search Results</h1>
   {% else %}

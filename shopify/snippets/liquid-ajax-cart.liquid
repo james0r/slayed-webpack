@@ -1,34 +1,3 @@
 <script type="application/json" data-ajax-cart-initial-state>
   {{ cart | json }}
 </script>
-
-<script type="module">
-  import '{{ "liquid-ajax-cart-v1.10.1.static.js" | asset_url }}';
-</script> 
-
-<script type="module">
-  import { subscribeToCartAjaxRequests, subscribeToCartStateUpdate, cartRequestGet } from '{{ 'liquid-ajax-cart-v1.10.1.static.js' | asset_url }}';
-  subscribeToCartAjaxRequests((requestState, subscribeToResult) => {
-    if (requestState.requestType === 'add') {
-      // Clear any existing errors
-      document.querySelectorAll('[data-ajax-cart-messages="form"]').forEach(element => element.innerHTML = '')
-
-      subscribeToResult(requestState => {
-        if (requestState.responseData?.ok) {
-            // document.body.querySelector('.minicart').classList.add('animate-red')
-            Alpine.store('globals').isMinicartVisible = true
-        }
-      })
-    }
-  });
-
-  subscribeToCartStateUpdate((state) => {
-    if (typeof Alpine != 'undefined') {
-      Alpine.store('liquidAjaxCart', {
-        state: state
-      })      
-    }
-  })
-
-  cartRequestGet()
-</script>

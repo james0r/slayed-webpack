@@ -5,8 +5,6 @@
     %}
 {% endcomment %}
 
-{% assign prod = product %}
-
 <div class="product-grid-item">
   <div class="product-grid-item-inner">
     <div class="image-wrapper" style="padding-top: 141%">
@@ -25,9 +23,9 @@
         {{ prod.price | money }}
       </p>
     </div>
-    {% form 'product', product %}
+    {% form 'product', prod %}
       <input type="hidden" name="id" value="{{ prod.selected_or_first_available_variant.id }}">
-      <input type="hidden" name="quantity" value="1">
+      <input type="hidden" name="quantity" value="1"> 
       <input type="submit" value="Add to cart">
       <div data-ajax-cart-messages="form"> 
         <!-- Error messages appear here --> 

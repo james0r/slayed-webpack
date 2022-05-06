@@ -61,6 +61,9 @@
     </div>
 
     <main id="main-content" role="main">
+      <div x-init="console.log($store.liquidAjaxCart.state.cart.item_count)">
+
+      </div>
       {{ content_for_layout }}
     </main>
 

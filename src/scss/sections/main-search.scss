@@ -1,12 +1,9 @@
 @import '../abstract/index';
 
-.shopify-section-main-search {
+.-search {
+  padding: 90px 20px;
 
   &-inner {
-    padding: 15px;
 
-    @include sm {
-      padding: 90px 90px;
-    }
   }
 }

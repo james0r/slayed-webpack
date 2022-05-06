@@ -1,32 +1,17 @@
 {% schema %}
 {
-"name": "list-collections",
-"class": "list-collections"
+"name": "main-index",
+"class": "featured-product-grid"
 }
 {% endschema %}
-
-{% unless collection %}
-{% assign collection = collections.all %}
-{% endunless %}
-
-<div class="list-collections-inner">
-  <h1>
-    Collections
-  </h1>
-  <ul class="collections-list">
-    {% for collection in collections %}
-    <li>
-      <a href="{{ collection.url }}">
-        {{ collection.title }}
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
-
+<div class="featured-product-grid-inner shell">
+  <h2>
+    Featured Product Grid
+  </h2>
   <div class="grid-wrapper">
-    {%- paginate collection.products by 12 -%}
+    {%- paginate collections.all.products by 12 -%}
     <div class="product-grid">
-      {% for prod in collection.products %}
+      {% for prod in collections.all.products %}
       {% render 'product-grid-item', prod: prod %}
       {% endfor %}
     </div>
@@ -96,23 +81,8 @@
 </div>
 
 <style>
-  .list-collections h1 {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  .list-collections {
+  .featured-product-grid {
     padding: 20px;
-  }
-
-  .list-collections .collections-list {
-    display: flex;
-    justify-content: center;
-  }
-
-  .list-collections .collections-list li + li {
-    margin-left: 1rem;
-    margin-bottom: 40px;
   }
 
   .product-grid {
@@ -121,11 +91,11 @@
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 
-  .list-collections .pagination-nav {
+  .featured-product-grid .pagination-nav {
     margin-top: 40px;
   }
 
-  .list-collections .pagination-nav .pagination {
+  .featured-product-grid .pagination-nav .pagination {
     display: flex;
     gap: 10px;
     margin: auto;
